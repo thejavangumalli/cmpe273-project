@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+
+    <script>
+        function submitForm(action)
+        {
+            document.getElementById('form1').action = action;
+            document.getElementById('form1').submit();
+        }
+    </script>
+
+     <form method="POST" name="form1">
+         email    : <input type="email" name="eMail">   <br/>
+         Password : <input type="password" name="password"><br/>
+         <input type="submit" onclick="submitForm('registration.html')" name="submit1" value="admin"><br/>
+         <input type="submit" onclick="submitForm('home.html')" name="submit2" value="user">
+     </form>
+</body>
+</html>
