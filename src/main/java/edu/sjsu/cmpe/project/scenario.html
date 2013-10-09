@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Home</title>
+</head>
+<body>
+
+    <script language="javascript">
+        function submitThis(){
+            if(document.forms["scenario"]["type1"].value=="type1")
+            {
+                document.getElementById('scenario').action='storeNotify.html';
+                document.getElementById('scenario').submit();
+            }
+
+            if(document.forms["scenario"]["type2"].value=="type2")
+            {
+                document.getElementById('scenario').action='deptNotify.html';
+                document.getElementById('scenario').submit();
+            }
+        }
+
+    </script>
+
+    <h3>Select a Suitable scenario</h3>
+    <form name="scenario" method="POST">
+        <input type="radio" name="type1" value="type1"> Store wide Notification<br/>
+        <input type="radio" name="type2" value="type2"> Department level Notification<br/>
+        <input type="submit" name="submit" onclick="submitThis()" value="go">
+    </form>
+</body>
+</html>
