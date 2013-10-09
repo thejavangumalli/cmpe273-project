@@ -7,28 +7,34 @@
 
 <script language="JavaScript">
     function submitThis(){
-        if(document.forms["dept"]["dept1"].value=="Groceries")
+        if(document.forms["dept"]["dept1"].checked)
         {
-            document.getElementById('dept').action='grocerySuccess.html';
-            document.getElementById('dept').submit();
+            var msg=prompt("Enter message for groceries department");
+            document.write(msg + " : sent Successfully to groceries department");
+           // document.getElementById('dept');
+           // document.getElementById('dept').submit();
         }
 
-        else if (document.forms["dept"]["dept2"].value=="Household")
+        else if (document.forms["dept"]["dept2"].checked)
         {
-            document.getElementById('dept').action='HouseholdSuccess.html';
-            document.getElementById('dept').submit();
+            var msg=prompt("Enter message for household department");
+            document.write(msg + " : sent Successfully to household department");
+            //document.getElementById('dept').action='HouseholdSuccess.html';
+            //document.getElementById('dept').submit();
         }
 
-        else if(document.forms["dept"]["dept3"].value=="Electronics")
+        else if(document.forms["dept"]["dept3"].checked)
         {
-            document.getElementById('dept').action='ElectronicsSuccess.html';
-            document.getElementById('dept').submit();
+            var msg=prompt("Enter message for Electronics department");
+            document.write(msg + " : sent Successfully to electronics department");
+            //document.getElementById('dept').action='ElectronicsSuccess.html';
+            //document.getElementById('dept').submit();
         }
     }
 </script>
 
 <h3>Select a Department </h3>
-<form name="dept" method="POST" >
+<form name="dept" id="dept" method="POST" >
     <input type="radio" name="dept1" value="Groceries"> Groceries <br/>
     <input type="radio" name="dept2" value="Household"> Household <br/>
     <input type="radio" name="dept3" value="Electronics"> Electronics <br/>
