@@ -13,9 +13,7 @@ import java.util.ArrayList;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserResource {
-	
 
-	   
     public UserResource() 
     {
 	// do nothing
@@ -23,9 +21,13 @@ public class UserResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public UserDto addUser(User request) throws UnknownHostException 
+    public UserDto addUser(@FormParam("firstname") String firstname,
+    		@FormParam("lastname") String lastname) throws UnknownHostException 
     {
-        UserDto ud=new UserDto(request);
+    	User request=new User();
+    	request.setFirstName(firstname);
+    	request.setLastName(lastname);
+        UserDto ud=new UserDto();
         ud.makeConnection();
         ud.createUser(request);
         return ud;
