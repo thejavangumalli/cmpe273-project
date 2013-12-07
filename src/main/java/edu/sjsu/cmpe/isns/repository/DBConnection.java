@@ -126,6 +126,23 @@ public ArrayList<User> usersInStore() {
 		 
 	}
 
+	public boolean DeleteEmployeeByUserName(String username) 
+    {
+		BasicDBObject findQuery = new BasicDBObject("userName", username);
+		if(coll.find(findQuery).count()!=0)
+		{
+	    coll.remove(findQuery);
+	    return true;
+		}
+		
+		else
+		{
+			System.out.println("User does not exist in the collection");
+			return false;
+		}
+		
+	}
+
 
 	
 }

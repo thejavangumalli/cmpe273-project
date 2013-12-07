@@ -33,6 +33,14 @@ import edu.sjsu.cmpe.isns.repository.DBConnection;
 			
 		}
 
+		public boolean DeleteUser(String userName) throws UnknownHostException 
+		{
+			DBConnection db=new DBConnection("user");
+			
+			  return db.DeleteEmployeeByUserName(userName);
+			   
+		}
+
 		/**
 		 * @param User
 		 *            the User to set
