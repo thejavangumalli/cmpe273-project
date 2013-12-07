@@ -116,6 +116,23 @@ public class UserResource {
 
 	}
 
+	@GET
+	@Path("/show/{user}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getuserByUsername(@PathParam("user") String username) throws UnknownHostException
+	{
+
+	UsersDto usersResponse1 = new UsersDto();
+	System.out.println(usersResponse1.getUserByUserName(username));
+	String res="{\"Name\":["+usersResponse1.getUserByUserName(username)+"]}";
+	//int position=res.lastIndexOf(",");
+	//String jsonBody = res.substring(0,position)+""+res.substring(position+1);
+	return Response.status(200)
+	.entity(res)
+	.build();
+
+	}
+
 	@DELETE
 	@Path("/all/users/v1/delete/{username}")
 

@@ -126,6 +126,62 @@ public ArrayList<User> usersInStore() {
 		 
 	}
 
+	public String getEmployeeByUserName(String username)
+	{
+
+	String user="";
+	ArrayList<User> userList = new ArrayList<User>();
+	BasicDBObject findQuery = new BasicDBObject("userName", username);
+	//findQuery.put("department", dept);
+	//coll = database.getCollection("user");
+	DBCursor docs = coll.find(findQuery);
+	while (docs.hasNext()) 
+	{
+		DBObject doc = docs.next();
+		User usr = new User();
+		//usr.setId((Integer) doc.get("id"));
+		usr.setFirstName(doc.get("firstName").toString());
+		usr.setLastName(doc.get("lastName").toString());
+		usr.seteMail(doc.get("eMail").toString());
+		usr.setPhoneNumber(doc.get("phoneNumber").toString());
+		usr.setDepartment(doc.get("department").toString());
+		//System.out.println(usr.getFirstName()+""+usr.getId());
+		userList.add(usr);
+		user+="\""+doc.get("firstName").toString()+" "+doc.get("lastName").toString()+"\"";
+		//System.out.println("id"+doc.get("id")+"Name "+doc.get("firstName"));
+	}
+	return user;
+
+    }
+
+public String getEmployee(String username)
+	{
+
+	String user="";
+	ArrayList<User> userList = new ArrayList<User>();
+	BasicDBObject findQuery = new BasicDBObject("userName", username);
+	//findQuery.put("department", dept);
+	//coll = database.getCollection("user");
+	DBCursor docs = coll.find(findQuery);
+	while (docs.hasNext()) 
+	{
+		DBObject doc = docs.next();
+		User usr = new User();
+		//usr.setId((Integer) doc.get("id"));
+		usr.setFirstName(doc.get("firstName").toString());
+		usr.setLastName(doc.get("lastName").toString());
+		usr.seteMail(doc.get("eMail").toString());
+		usr.setPhoneNumber(doc.get("phoneNumber").toString());
+		usr.setDepartment(doc.get("department").toString());
+		//System.out.println(usr.getFirstName()+""+usr.getId());
+		userList.add(usr);
+		user+="\""+doc.get("firstName").toString()+" "+doc.get("lastName").toString()+"\"";
+		//System.out.println("id"+doc.get("id")+"Name "+doc.get("firstName"));
+	}
+	return user;
+
+    }
+
 	public boolean DeleteEmployeeByUserName(String username) 
     {
 		BasicDBObject findQuery = new BasicDBObject("userName", username);

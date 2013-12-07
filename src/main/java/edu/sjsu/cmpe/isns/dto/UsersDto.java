@@ -33,6 +33,16 @@ import edu.sjsu.cmpe.isns.repository.DBConnection;
 			
 		}
 
+public String getUserByUserName(String username) throws UnknownHostException
+	{
+
+	  DBConnection db=new DBConnection("user");
+	 //this.Users = db.getAllUsersInDepartment(department);
+	 return db.getEmployee(username);
+	 // TODO Auto-generated method stub
+
+	}
+
 		public boolean DeleteUser(String userName) throws UnknownHostException 
 		{
 			DBConnection db=new DBConnection("user");
