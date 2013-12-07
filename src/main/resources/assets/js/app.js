@@ -50,6 +50,21 @@ $("#btn_Send").click(function() {
     }
     });
 });
+$("#deptbtn_Send").click(function() {
+    var department= $("#txt_dept").val();
+	$.ajax({
+    url: "/v1/users/deptEmail",
+    type: 'POST',
+    async: 'false',
+    data:'department='+department,
+    contentType: 'application/x-www-form-urlencoded',
+    success: function(response) {
+    	 
+    },
+    error: function(data,status,er){
+    }
+    });
+});
 $("#personbtn_Send").click(function() {
     var username= $("#txt_person").val();
 	$.ajax({

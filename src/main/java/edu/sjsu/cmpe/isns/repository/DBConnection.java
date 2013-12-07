@@ -179,6 +179,35 @@ public void sendStoreEmail() throws Exception{
 	}
 	return rc;
 	}
+	
+	public void sendDeptEmail(String department) throws Exception {
+		destination="/topic/isns.dept."+department;
+		factory = new StompJmsConnectionFactory();
+		factory.setBrokerURI("tcp://" + host + ":" + port);
+		connection = factory.createConnection(user, password);
+		connection.start();
+		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		dest = new StompJmsDestination(destination);
+		consumer = session.createConsumer(dest);
+		msg = consumer.receive();
+
+		if( msg instanceof StompJmsMessage )
+		{
+			StompJmsMessage smsg = ((StompJmsMessage) msg);
+			String body = smsg.getFrame().contentAsString();
+			BasicDBObject findQuery = new BasicDBObject("department", department);
+			DBCursor docs = coll.find(findQuery);
+			while (docs.hasNext()) {
+			DBObject doc = docs.next();
+			if(doc.get("eMail").toString()!=null)
+			emails.add(doc.get("eMail").toString());
+		}
+		@SuppressWarnings("unused")
+		AwsEmail email=new AwsEmail(emails,body);
+		connection.close();
+	}
+	}
+
 	public void sendpersonEmail(String username) throws Exception {
 		BasicDBObject findQuery = new BasicDBObject("userName", username);
 		DBCursor docs = coll.find(findQuery);

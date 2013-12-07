@@ -186,6 +186,14 @@ public class UserResource {
 		return null;
 	}
 
+@Path("/deptEmail")
+	@POST
+	public String deptEmail(@FormParam("department") String department) throws Exception{
+		DBConnection dbc=new DBConnection("user");
+		dbc.sendDeptEmail(department);
+		return null;
+	}
+
 @Path("/personEmail")
 	@POST
 	public String personEmail(@FormParam("username") String username) throws Exception{
