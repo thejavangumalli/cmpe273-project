@@ -25,7 +25,13 @@ import edu.sjsu.cmpe.isns.repository.DBConnection;
 			//this.Users = Users;
 		}
 			
-		
+		public String getAlldeptUsers(String department) throws UnknownHostException {
+			DBConnection db=new DBConnection("user");
+			//this.Users = db.getAllUsersInDepartment(department);
+			return  db.getAllUsersInDepartment(department);
+			// TODO Auto-generated method stub
+			
+		}
 
 		/**
 		 * @param User
