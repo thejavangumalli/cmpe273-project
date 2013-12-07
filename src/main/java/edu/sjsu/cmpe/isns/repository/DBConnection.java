@@ -179,5 +179,15 @@ public void sendStoreEmail() throws Exception{
 	}
 	return rc;
 	}
-	
+	public void sendpersonEmail(String username) throws Exception {
+		BasicDBObject findQuery = new BasicDBObject("userName", username);
+		DBCursor docs = coll.find(findQuery);
+		while (docs.hasNext()) {
+			DBObject doc = docs.next();
+			if(doc.get("eMail").toString()!=null)
+			emails.add(doc.get("eMail").toString());		}
+		@SuppressWarnings("unused")
+		AwsEmail email=new AwsEmail(emails,"Please login to check your notification");
+		
+	}
 }

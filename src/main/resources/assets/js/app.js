@@ -50,3 +50,18 @@ $("#btn_Send").click(function() {
     }
     });
 });
+$("#personbtn_Send").click(function() {
+    var username= $("#txt_person").val();
+	$.ajax({
+    url: "/v1/users/personEmail",
+    type: 'POST',
+    async: 'false',
+    data:'username='+username,
+    contentType: 'application/x-www-form-urlencoded',
+    success: function(response) {
+    	 
+    },
+    error: function(data,status,er){
+    }
+    });
+});
