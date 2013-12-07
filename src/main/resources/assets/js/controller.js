@@ -41,6 +41,23 @@ function searchUserByDept(){
 	});
 
 	}
+	
+	function searchUser(){
+	var name = document.getElementById("usernameSearch").value;
+	var URL = "/v1/users/show/"+name;
+	$.ajax({
+	url: URL,
+	type: 'GET',
+	async: 'false',
+	contentType: 'application/x-www-form-urlencoded',
+	success: function(response) {
+	alert("The Users is the "+response);
+	},
+	error: function(data,status,er){
+	alert("Unable to Fetch details at this moment!!!");
+	}
+  });
+}
 
 function deleteUser(){
 	var lname = document.getElementById("usernameDelete").value;
