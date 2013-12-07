@@ -178,7 +178,13 @@ public class UserResource {
 					.build();
 		}
 			}
-
+	@Path("/storeEmail")
+	@GET
+	public String storeEmail() throws Exception{
+		DBConnection dbc=new DBConnection("user");
+		dbc.sendStoreEmail();
+		return null;
+	}
 
 
 
