@@ -49,7 +49,29 @@ public class DBConnection {
 		coll = database.getCollection(collectionTable);
 		
 	}
-public void StoreUser(edu.sjsu.cmpe.isns.domain.User request) {
+public ArrayList<User> usersInStore() {
+		// BasicDBObject findQuery = new BasicDBObject("firstName", "raj");
+		ArrayList<User> usrList = new ArrayList<User>();
+
+		DBCursor docs = coll.find();
+		while (docs.hasNext()) {
+			DBObject doc = docs.next();
+			User usr = new User();
+			//usr.setId(Integer.parseInt(doc.get("id").toString()));
+			usr.setFirstName(doc.get("firstName").toString());
+			usr.setLastName(doc.get("lastName").toString());
+			usr.seteMail(doc.get("eMail").toString());
+			usr.setPhoneNumber(doc.get("phoneNumber").toString());
+			usr.setDepartment(doc.get("department").toString());
+			usr.setUserName(doc.get("userName").toString());
+			usr.setPassword(doc.get("password").toString());
+			
+			usrList.add(usr);
+			// System.out.println("id"+doc.get("id")+"Name "+doc.get("firstName"));
+		}
+		return usrList;
+	}
+	public void StoreUser(edu.sjsu.cmpe.isns.domain.User request) {
 		BasicDBObject document = new BasicDBObject();
 		//System.out.println("In Store User"+request.getUserName());
 		 if(request.getUserName()!=null)

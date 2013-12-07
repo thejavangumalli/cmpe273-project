@@ -46,6 +46,11 @@ public class UserDto extends LinksDto {
 		AwsEmail email=new AwsEmail(emails,"you are successfully registered");
 		dbc.StoreUser(usr);
 	}
+	public List<User> getUsers() throws UnknownHostException {
+			DBConnection db=new DBConnection("user");
+			//this.Users = db.usersInStore();
+			return db.usersInStore();
+		}
 	
 	public ArrayList<User> getAllUsers() throws UnknownHostException {
 		DBConnection dbc = new DBConnection("user");

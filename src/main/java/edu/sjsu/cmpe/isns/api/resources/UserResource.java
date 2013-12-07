@@ -72,6 +72,20 @@ public class UserResource {
 				.build();
 			}
 
+	@GET
+	@Path("/allusers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAllUsers() throws UnknownHostException 
+	{
+		System.out.println("In users");
+		UsersDto usersResponse = new UsersDto();
+		usersResponse.getUsers();      
+		return Response.status(200)
+				.entity(usersResponse)
+				.build();
+	}
+
+
 	
 
 
